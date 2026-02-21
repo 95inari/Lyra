@@ -8,7 +8,7 @@
 
 これを自動化するPythonツール **Lyra** を作り、オープンソースとして公開しました。
 
-GitHub: https://github.com/<owner>/lyra
+GitHub: https://github.com/95inari/Lyra
 
 ---
 
@@ -71,7 +71,10 @@ GitHub: https://github.com/<owner>/lyra
 
 ```bash
 # インストール
-git clone https://github.com/<owner>/lyra
+git clone https://github.com/95inari/Lyra
+cd Lyra
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -e .
 python scripts/download_models.py --rmvpe
 
@@ -152,7 +155,7 @@ DTW のアライメント精度が低い区間は `confidence` スコアが下�
 
 音楽制作・ミックスエンジニアリング・Python オーディオ処理に興味がある方はぜひ触ってみてください。フィードバックも歓迎です。
 
-GitHub: https://github.com/<owner>/lyra
+GitHub: https://github.com/95inari/Lyra
 
 ---
 
