@@ -67,6 +67,34 @@ python scripts/download_models.py --rmvpe
 
 > RMVPE モデル（約 181 MB）を Hugging Face からダウンロードします。
 
+## クイックスタート
+
+インストール完了後、以下のコマンドですぐに使えます。
+
+**CLI（コマンドライン）**
+
+```bash
+lyra run --ref reference.wav --vocal new_vocal.wav
+```
+
+処理が完了すると `edited_vocal.wav` と `recipe.json` がカレントディレクトリに生成されます。
+
+**GUI**
+
+```bash
+python -m gui.app
+```
+
+または直接起動:
+
+```bash
+python gui/app.py
+```
+
+ウィンドウが開いたら、ファイル選択 → 実行ボタンで処理が始まります。
+
+---
+
 ## 使い方
 
 ### CLI
