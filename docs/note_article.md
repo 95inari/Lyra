@@ -149,6 +149,70 @@ DTW のアライメント精度が低い区間は `confidence` スコアが下�
 
 ---
 
+## 利用者の方へ
+
+Lyra は DTM・音楽制作をしている方を主な対象にしています。
+
+**こんな場面で役立ちます:**
+
+- カバー曲やコラボで、別シンガーのボーカルをリファレンスのテイクに合わせたい
+- 複数テイクを録り直したが、ピッチ・タイミングを統一してコンプしたい
+- ボーカルエディットの下処理を自動化して、細かい手直しだけに集中したい
+
+**使うときのコツ:**
+
+- リファレンスは **分離済みの Vocal Stem** を渡すと精度が上がります（`--stem` フラグ）
+- キーが明らかにずれている場合は `--key-shift` で手動指定するほうが安定します
+- 結果が過補正に感じたら `--preset light` を試してください
+
+**フィードバックについて:**
+
+「こういうケースで外れた」「この音源で試したらうまくいった」という報告を GitHub の [Issues](https://github.com/95inari/Lyra/issues) に送っていただけると、改善に直結します。
+
+---
+
+## 開発者の方へ
+
+Lyra はオーディオ処理・機械学習・GUI を組み合わせたプロジェクトです。Python に慣れている方であればすぐにコードを読めると思います。
+
+**リポジトリ構成:**
+
+```
+core/          # 処理コア（分離・F0推定・アライメント・レンダリング）
+cli/           # コマンドラインインターフェース
+gui/           # PySide6 GUI
+tests/         # スモークテスト・統合テスト
+scripts/       # モデルダウンロードスクリプト
+schemas/       # recipe.json スキーマ定義
+```
+
+**開発環境のセットアップ:**
+
+```bash
+git clone https://github.com/95inari/Lyra
+cd Lyra
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+python scripts/download_models.py --rmvpe
+
+# テスト（モデル不要）
+pytest tests/test_smoke.py -v
+
+# リント
+ruff check .
+```
+
+**特に助かる貢献:**
+
+- アライメント精度の改善（フェイク・装飾音符対応）
+- F0推定の後処理（オクターブ誤判定の修正）
+- Windows 環境での動作確認・バグ修正
+- GUI のUX改善
+
+詳細は [CONTRIBUTING.md](https://github.com/95inari/Lyra/blob/main/CONTRIBUTING.md) をご覧ください。
+
+---
+
 ## おわりに
 
 まだ実用レベルには課題がありますが、「ボーカルエディットの自動化」というアプローチ自体は手応えを感じています。
