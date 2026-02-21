@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "lyra/schemas/recipe.v1.json",
+  "title": "lyra Recipe",
+  "description": "ボーカル補正レシピ — アライメント・ピッチ・タイミング情報を格納する中心資産",
+  "type": "object",
+  "required": ["version", "sample_rate", "global_key_shift_semitones", "segments"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "スキーマバージョン",
+      "example": "0.1"
+    },
+    "sample_rate": {
+      "type": "integer",
+      "description": "サンプルレート（Hz）",
+      "example": 44100
+    },
+    "global_key_shift_semitones": {
+      "type": "number",
+      "description": "全体キーシフト（セミトーン）。正=上げ、負=下げ"
+    },
+    "segments": {
+      "type": "array",
+      "description": "補正セグメントのリスト",
+      "items": {
+        "type": "object",
+        "required": [
+          "t0", "t1",
+          "time_warp_points", "pitch_target_curve",
+          "confidence", "pitch_strength", "time_strength",
+          "protect_unvoiced"
+        ],
+        "properties": {
+          "t0": {
+            "type": "number",
+            "description": "セグメント開始時刻（秒）"
+          },
+          "t1": {
+            "type": "number",
+            "description": "セグメント終了時刻（秒）"
+          },
+          "time_warp_points": {
+            "type": "array",
+            "description": "タイムワープ対応点リスト。各要素は [new_vocal_時刻, reference_時刻]（秒）",
+            "items": {
+              "type": "array",
+              "items": {"type": "number"},
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "pitch_target_curve": {
+            "type": "array",
+            "description": "目標ピッチカーブ。各要素は [時刻（秒）, Hz]。Hz=0 は無声区間",
+            "items": {
+              "type": "array",
+              "items": {"type": "number"},
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "DTW アライメントの信頼度。低いほど補正を自動で弱める"
+          },
+          "pitch_strength": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "ピッチ補正の強さ。エンジンが confidence から自動設定。UI スライダーで上書き可"
+          },
+          "time_strength": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "タイミング補正の強さ。エンジンが confidence から自動設定。UI スライダーで上書き可"
+          },
+          "protect_unvoiced": {
+            "type": "boolean",
+            "description": "子音・ブレス区間をタイムストレッチから保護するフラグ"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "description": "破綻リスク区間のリスト。GUI でハイライト表示に使う",
+      "items": {
+        "type": "object",
+        "required": ["t0", "t1", "reason"],
+        "properties": {
+          "t0": {"type": "number"},
+          "t1": {"type": "number"},
+          "reason": {
+            "type": "string",
+            "enum": ["low_confidence", "large_time_warp", "pitch_out_of_range"]
+          },
+          "detail": {"type": "string"}
+        }
+      }
+    }
+  }
+}

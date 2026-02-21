@@ -1,0 +1,59 @@
+Lyra
+Copyright (c) 2025 Lyra Contributors
+
+This product includes the following third-party components:
+
+------------------------------------------------------------------------
+RMVPE (Robust Multi-pitch Estimation model for Vocal)
+------------------------------------------------------------------------
+Source:  https://github.com/yxlllc/RMVPE
+Files:   core/pitch/rmvpe_src/
+         models/rmvpe.pt (downloaded separately)
+License: MIT License
+Copyright (c) yxlllc
+
+Paper: Wang et al., "RMVPE: A Robust Model for Vocal Pitch Estimation
+in Polyphonic Music" (arXiv:2306.15412)
+
+------------------------------------------------------------------------
+pyrubberband / Rubber Band Library
+------------------------------------------------------------------------
+Python wrapper: https://github.com/bmcfee/pyrubberband
+Underlying C++ library: https://breakfastquay.com/rubberband/
+
+License (pyrubberband): GNU General Public License v2 or later (GPL-2.0+)
+License (Rubber Band Library): GPL-2.0+ for open-source use;
+                                 commercial license available from Breakfast Quay
+
+IMPORTANT: pyrubberband is licensed under GPL-2.0+. If you distribute
+Lyra as part of a closed-source or proprietary product, you must either:
+  (a) comply with the GPL-2.0 terms (make source available), or
+  (b) obtain a commercial license for the Rubber Band Library from
+      https://breakfastquay.com/rubberband/
+
+------------------------------------------------------------------------
+Demucs
+------------------------------------------------------------------------
+Source:  https://github.com/facebookresearch/demucs
+License: MIT License
+Copyright (c) Facebook, Inc. and its affiliates.
+
+------------------------------------------------------------------------
+Additional Python dependencies
+------------------------------------------------------------------------
+The following packages are used at runtime. See their respective
+repositories for full license texts.
+
+  torch / torchaudio  — BSD-3-Clause  (Meta Platforms)
+  librosa             — ISC License
+  torchcrepe          — MIT License   (Max Morrison)
+  beat-this           — MIT License
+  dtw-python          — GNU GPL v3+   (Toni Giorgino)
+  soundfile           — BSD License
+  PySide6             — LGPL-3.0 / Commercial (The Qt Company)
+  pyqtgraph           — MIT License
+  numpy               — BSD-3-Clause
+  scipy               — BSD-3-Clause
+
+Note on dtw-python: This package is licensed under GPL v3+. The same
+distribution considerations as pyrubberband apply (see above).

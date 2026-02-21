@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lyra"
+version = "0.1.0"
+description = "Automated vocal editing tool for music production"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.11"
+keywords = ["audio", "vocal", "pitch-correction", "music-production", "daw", "mixing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Multimedia :: Sound/Audio :: Editors",
+    "Intended Audience :: End Users/Desktop",
+]
+dependencies = [
+    "torch>=2.0",
+    "torchaudio>=2.0",
+    "demucs>=4.0",
+    "rmvpe",
+    "torchcrepe",
+    "beat-this",
+    "librosa>=0.10",
+    "dtw-python",
+    "pyrubberband",
+    "soundfile",
+    "numpy",
+    "scipy",
+    "PySide6",
+    "pyqtgraph",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+
+[project.urls]
+Homepage = "https://github.com/<owner>/lyra"
+Repository = "https://github.com/<owner>/lyra"
+Issues = "https://github.com/<owner>/lyra/issues"
+Changelog = "https://github.com/<owner>/lyra/blob/main/CHANGELOG.md"
+
+[project.scripts]
+lyra = "cli.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["core", "cli", "gui"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [
+    ".venv",
+    "core/pitch/rmvpe_src",  # vendored third-party code
+]
+
+[tool.ruff.lint]
+select = ["E", "F"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

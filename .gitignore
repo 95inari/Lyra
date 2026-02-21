@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Models (large binary files — download separately via scripts/download_models.py)
+models/*.pt
+models/*.pth
+models/*.bin
+models/*.onnx
+
+# Audio / video working files
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.aiff
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Ruff / linters
+.ruff_cache/
+
+# Distribution / packaging
+MANIFEST
+*.spec
