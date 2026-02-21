@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 
+**言語:** 日本語 | [English](README_EN.md) | [简体中文](README_ZH.md) | [한국어](README_KO.md) | [Español](README_ES.md)
+
 ---
 
 ## 概要
