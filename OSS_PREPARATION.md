@@ -17,14 +17,13 @@ Lyra をオープンソースとして公開するにあたり必要な準備事
 | 7 | `CHANGELOG.md` を作成 | `CHANGELOG.md` |
 | 8 | `SECURITY.md` を作成 | `SECURITY.md` |
 | 9 | `NOTICE` を作成（サードパーティ著作権・GPL 注記） | `NOTICE` |
-| 10 | GitHub Actions CI を設定（3OS × Python 3.11/3.12） | `.github/workflows/ci.yml` |
-| 11 | Issue / PR テンプレートを作成 | `.github/ISSUE_TEMPLATE/`, `.github/PULL_REQUEST_TEMPLATE.md` |
-| 12 | Dependabot を設定 | `.github/dependabot.yml` |
-| 13 | ruff lint 全エラーを解消 | 複数ファイル |
-| 14 | smoke テスト 9/9 通過確認 | `tests/test_smoke.py` |
-| 15 | PRODUCTION_FIXES.md 全11項目 実装済みを確認 | `PRODUCTION_FIXES.md` |
-| 16 | `要件定義` → `docs/design_notes.md` に移動 | `docs/design_notes.md` |
-| 17 | git リポジトリ初期化・初回コミット（`main` ブランチ） | — |
+| 10 | ruff lint 全エラーを解消 | 複数ファイル |
+| 11 | smoke テスト 9/9 通過確認 | `tests/test_smoke.py` |
+| 12 | PRODUCTION_FIXES.md 全11項目 実装済みを確認 | `PRODUCTION_FIXES.md` |
+| 13 | `要件定義` → `docs/design_notes.md` に移動 | `docs/design_notes.md` |
+| 14 | git リポジトリ初期化・初回コミット（`main` ブランチ） | — |
+| 15 | 多言語 README を追加（英語・中国語・韓国語・スペイン語） | `README_EN.md`, `README_ZH.md`, `README_KO.md`, `README_ES.md` |
+| 16 | note 記事を作成・拡充（利用者・開発者向けセクション追加） | `docs/note_article.md` |
 
 ---
 
@@ -42,11 +41,15 @@ Lyra をオープンソースとして公開するにあたり必要な準備事
   ```
 
 - [ ] **`pyrubberband`（GPL v2+）の対応方針を決定**（詳細は下記）
+- [ ] **RMVPE モデルのライセンス不明問題に対応**（詳細は下記「RMVPE モデル」参照。LICENSE ファイルが存在せず再配布権が未確立）
+- [ ] **GitHub Actions CI を設定**（`.github/workflows/ci.yml`）— リポジトリに `.github/` ディレクトリが未作成のため、CI は未設定
+- [ ] **Issue / PR テンプレートを作成**（`.github/ISSUE_TEMPLATE/`, `.github/PULL_REQUEST_TEMPLATE.md`）— 同上、未作成
+- [ ] **Dependabot を設定**（`.github/dependabot.yml`）— 同上、未作成
 
 ### 推奨
 
 - [ ] GitHub リポジトリの About 欄を設定（Topics: `audio`, `vocal`, `python`, `music-production`）
-- [ ] `main` ブランチの保護ルールを設定（PR 必須 + CI 必須）
+- [ ] `main` ブランチの保護ルールを設定（PR 必須 + CI 必須。CI 設定が前提）
 - [ ] GitHub の Private vulnerability reporting を有効化
 
 ---
@@ -72,9 +75,17 @@ Lyra は **MIT License** で公開しますが、以下の依存が GPL です�
 - `pyrubberband` → `pedalboard`（Spotify製、GPL-free）または Rubber Band Library 商用ライセンス
 - `dtw-python` → `tslearn` の DTW 実装（BSD-3-Clause）
 
-### RMVPE モデル（`models/rmvpe.pt`）
+### RMVPE モデル（`models/rmvpe.pt`）⚠️ 未解決のライセンスリスク
 
-モデルファイルの元リポジトリ（https://github.com/yxlllc/RMVPE）のライセンスを確認の上、`NOTICE` ファイルに正確な情報を記載してください。
+`NOTICE` に「License: MIT」と記載されていましたが、確認したところ誤りでした。
+`yxlllc/RMVPE` リポジトリには LICENSE ファイルが存在せず（GitHub API・README ともにライセンス表記なし）、
+フォーク元の `Dream-High/RMVPE` は Apache License 2.0 ですが、フォーク側にそのライセンスは引き継がれていません。
+明示的なライセンス付与がないため、`models/rmvpe.pt` と `core/pitch/rmvpe_src/` の再配布権が確立されていない状態です。
+
+`NOTICE` は暫定的に正確な状況（ライセンス不明）へ更新済みですが、公開前に次のいずれかの対応が必須です:
+
+- [ ] 元リポジトリ作者（yxlllc）へライセンス条件を問い合わせる
+- [ ] 明確にライセンスされた代替 F0 推定モデルへ差し替える
 
 ---
 

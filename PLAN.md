@@ -185,10 +185,13 @@ pichi/
 ├── cli/
 │   └── main.py
 ├── gui/
-│   ├── app.py                    # PySide6 メインウィンドウ
+│   ├── app.py                    # アプリケーションエントリーポイント
+│   ├── main_window.py            # PySide6 メインウィンドウ
+│   ├── worker.py                 # バックグラウンド処理（パイプライン/エクスポート）
 │   └── widgets/
-│       ├── pitch_view.py         # ピッチ3カーブビュー（インタラクティブ）
-│       └── timeline_view.py      # 波形 + confidence ヒートマップ
+│       ├── pitch_view.py         # ピッチ3カーブビュー
+│       ├── warp_view.py          # ワープマップ（タイミング補正）表示
+│       └── segment_panel.py      # セグメントごとの強度スライダー
 ├── schemas/
 │   └── recipe.v1.json
 ├── tests/
