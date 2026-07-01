@@ -17,16 +17,13 @@ Lyra をオープンソースとして公開するにあたり必要な準備事
 | 7 | `CHANGELOG.md` を作成 | `CHANGELOG.md` |
 | 8 | `SECURITY.md` を作成 | `SECURITY.md` |
 | 9 | `NOTICE` を作成（サードパーティ著作権・GPL 注記） | `NOTICE` |
-| 10 | GitHub Actions CI を設定（3OS × Python 3.11/3.12） | `.github/workflows/ci.yml` |
-| 11 | Issue / PR テンプレートを作成 | `.github/ISSUE_TEMPLATE/`, `.github/PULL_REQUEST_TEMPLATE.md` |
-| 12 | Dependabot を設定 | `.github/dependabot.yml` |
-| 13 | ruff lint 全エラーを解消 | 複数ファイル |
-| 14 | smoke テスト 9/9 通過確認 | `tests/test_smoke.py` |
-| 15 | PRODUCTION_FIXES.md 全11項目 実装済みを確認 | `PRODUCTION_FIXES.md` |
-| 16 | `要件定義` → `docs/design_notes.md` に移動 | `docs/design_notes.md` |
-| 17 | git リポジトリ初期化・初回コミット（`main` ブランチ） | — |
-| 18 | 多言語 README を追加（英語・中国語・韓国語・スペイン語） | `README_EN.md`, `README_ZH.md`, `README_KO.md`, `README_ES.md` |
-| 19 | note 記事を作成・拡充（利用者・開発者向けセクション追加） | `docs/note_article.md` |
+| 10 | ruff lint 全エラーを解消 | 複数ファイル |
+| 11 | smoke テスト 9/9 通過確認 | `tests/test_smoke.py` |
+| 12 | PRODUCTION_FIXES.md 全11項目 実装済みを確認 | `PRODUCTION_FIXES.md` |
+| 13 | `要件定義` → `docs/design_notes.md` に移動 | `docs/design_notes.md` |
+| 14 | git リポジトリ初期化・初回コミット（`main` ブランチ） | — |
+| 15 | 多言語 README を追加（英語・中国語・韓国語・スペイン語） | `README_EN.md`, `README_ZH.md`, `README_KO.md`, `README_ES.md` |
+| 16 | note 記事を作成・拡充（利用者・開発者向けセクション追加） | `docs/note_article.md` |
 
 ---
 
@@ -44,11 +41,14 @@ Lyra をオープンソースとして公開するにあたり必要な準備事
   ```
 
 - [ ] **`pyrubberband`（GPL v2+）の対応方針を決定**（詳細は下記）
+- [ ] **GitHub Actions CI を設定**（`.github/workflows/ci.yml`）— リポジトリに `.github/` ディレクトリが未作成のため、CI は未設定
+- [ ] **Issue / PR テンプレートを作成**（`.github/ISSUE_TEMPLATE/`, `.github/PULL_REQUEST_TEMPLATE.md`）— 同上、未作成
+- [ ] **Dependabot を設定**（`.github/dependabot.yml`）— 同上、未作成
 
 ### 推奨
 
 - [ ] GitHub リポジトリの About 欄を設定（Topics: `audio`, `vocal`, `python`, `music-production`）
-- [ ] `main` ブランチの保護ルールを設定（PR 必須 + CI 必須）
+- [ ] `main` ブランチの保護ルールを設定（PR 必須 + CI 必須。CI 設定が前提）
 - [ ] GitHub の Private vulnerability reporting を有効化
 
 ---
