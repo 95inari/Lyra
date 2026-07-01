@@ -9,8 +9,18 @@ RMVPE (Robust Multi-pitch Estimation model for Vocal)
 Source:  https://github.com/yxlllc/RMVPE
 Files:   core/pitch/rmvpe_src/
          models/rmvpe.pt (downloaded separately)
-License: MIT License
+License: No LICENSE file is present in this repository (verified via the
+         GitHub API and README as of 2026-07). yxlllc/RMVPE is a fork of
+         Dream-High/RMVPE, which is licensed under Apache License 2.0,
+         but the fork itself does not carry that license file forward,
+         so its terms cannot be assumed to apply. Without an explicit
+         license grant, redistribution rights are not established.
 Copyright (c) yxlllc
+
+IMPORTANT: This is an unresolved licensing risk, not a confirmed MIT
+license. Contact the upstream author for clarification, or replace
+this dependency with a clearly licensed alternative, before relying on
+redistribution rights for models/rmvpe.pt or core/pitch/rmvpe_src/.
 
 Paper: Wang et al., "RMVPE: A Robust Model for Vocal Pitch Estimation
 in Polyphonic Music" (arXiv:2306.15412)

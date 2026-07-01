@@ -41,6 +41,7 @@ Lyra をオープンソースとして公開するにあたり必要な準備事
   ```
 
 - [ ] **`pyrubberband`（GPL v2+）の対応方針を決定**（詳細は下記）
+- [ ] **RMVPE モデルのライセンス不明問題に対応**（詳細は下記「RMVPE モデル」参照。LICENSE ファイルが存在せず再配布権が未確立）
 - [ ] **GitHub Actions CI を設定**（`.github/workflows/ci.yml`）— リポジトリに `.github/` ディレクトリが未作成のため、CI は未設定
 - [ ] **Issue / PR テンプレートを作成**（`.github/ISSUE_TEMPLATE/`, `.github/PULL_REQUEST_TEMPLATE.md`）— 同上、未作成
 - [ ] **Dependabot を設定**（`.github/dependabot.yml`）— 同上、未作成
@@ -74,9 +75,17 @@ Lyra は **MIT License** で公開しますが、以下の依存が GPL です�
 - `pyrubberband` → `pedalboard`（Spotify製、GPL-free）または Rubber Band Library 商用ライセンス
 - `dtw-python` → `tslearn` の DTW 実装（BSD-3-Clause）
 
-### RMVPE モデル（`models/rmvpe.pt`）
+### RMVPE モデル（`models/rmvpe.pt`）⚠️ 未解決のライセンスリスク
 
-モデルファイルの元リポジトリ（https://github.com/yxlllc/RMVPE）のライセンスを確認の上、`NOTICE` ファイルに正確な情報を記載してください。
+`NOTICE` に「License: MIT」と記載されていましたが、確認したところ誤りでした。
+`yxlllc/RMVPE` リポジトリには LICENSE ファイルが存在せず（GitHub API・README ともにライセンス表記なし）、
+フォーク元の `Dream-High/RMVPE` は Apache License 2.0 ですが、フォーク側にそのライセンスは引き継がれていません。
+明示的なライセンス付与がないため、`models/rmvpe.pt` と `core/pitch/rmvpe_src/` の再配布権が確立されていない状態です。
+
+`NOTICE` は暫定的に正確な状況（ライセンス不明）へ更新済みですが、公開前に次のいずれかの対応が必須です:
+
+- [ ] 元リポジトリ作者（yxlllc）へライセンス条件を問い合わせる
+- [ ] 明確にライセンスされた代替 F0 推定モデルへ差し替える
 
 ---
 
