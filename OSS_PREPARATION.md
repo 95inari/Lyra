@@ -25,6 +25,8 @@ Lyra をオープンソースとして公開するにあたり必要な準備事
 | 15 | PRODUCTION_FIXES.md 全11項目 実装済みを確認 | `PRODUCTION_FIXES.md` |
 | 16 | `要件定義` → `docs/design_notes.md` に移動 | `docs/design_notes.md` |
 | 17 | git リポジトリ初期化・初回コミット（`main` ブランチ） | — |
+| 18 | 多言語 README を追加（英語・中国語・韓国語・スペイン語） | `README_EN.md`, `README_ZH.md`, `README_KO.md`, `README_ES.md` |
+| 19 | note 記事を作成・拡充（利用者・開発者向けセクション追加） | `docs/note_article.md` |
 
 ---
 

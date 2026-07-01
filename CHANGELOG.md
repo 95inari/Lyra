@@ -5,10 +5,16 @@
 
 ## [Unreleased]
 
-### Known Issues
-- グローバル状態の競合（並列実行時のレースコンディション）
-- `protect_unvoiced` フラグが renderer に未適用
-- GUI がファイルダイアログで MP3 を許可するが、処理は非対応
+### Added
+- 多言語 README（英語・中国語・韓国語・スペイン語）
+
+### Fixed
+- グローバル状態の競合を解消（`generate()` の confidence 閾値を引数化）
+- `sys.path.insert` の重複実行を解消（モジュールロード時に一度だけ実行）
+- `protect_unvoiced` フラグを renderer に実装（無声区間へのピッチシフトを無効化）
+- GUI ファイルダイアログから未対応の MP3 フィルタを削除
+
+詳細は [PRODUCTION_FIXES.md](PRODUCTION_FIXES.md) を参照してください。
 
 ## [0.1.0] - 2025-XX-XX
 
